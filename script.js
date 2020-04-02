@@ -1,13 +1,15 @@
 $(document).ready(function () {
+    // Put the current day and time at the top of the page
     $("#currentDay").text(moment().format('dddd MMMM Do YYYY, h:mm a'));
-    for (i = 9; i < 17; i++) {
+    // Loop through local storage and put data on page in correct hour
+    for (i = 9; i <= 17; i++) {
         var temporaryStorage = localStorage.getItem("scheduleStr" + i);
         $("textarea[data-hour = " + i + "]").val(temporaryStorage)
         // 
     };
-    // refress page every hour to update time blocks
-    // setInterval(refreshPage(), 600000);
+    // Call the function to update the hours to the correct colors
     getTimeBlockClasses();
+    // On save button click add data added to hour and save to local storage
     $(".saveBtn").on("click", function () {
         console.log("I have been clicked")
         var dataHour = ($(this).attr("data-hour"));
@@ -17,7 +19,7 @@ $(document).ready(function () {
         localStorage.setItem("scheduleStr" + dataHour, textDescription)
     });
 
-
+// This function updates the hours to the correct colors for past, present, and future
     function getTimeBlockClasses() {
 
         for (i = 9; i <= 17; i++) {
@@ -43,9 +45,6 @@ $(document).ready(function () {
         };
     };
 
-    // function refreshPage() { 
-    //     location.reload(); 
-    // }
 });
 
 
