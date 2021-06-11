@@ -7,6 +7,9 @@ $(document).ready(function () {
         $("textarea[data-hour = " + i + "]").val(temporaryStorage)
         // 
     };
+
+    setInterval("refreshPage()", 600000);
+
     // Call the function to update the hours to the correct colors
     getTimeBlockClasses();
     // On save button click add data added to hour and save to local storage
@@ -45,5 +48,9 @@ $(document).ready(function () {
         };
     };
 });
+
+function refreshPage() { 
+    location.reload(); 
+};
 
 
